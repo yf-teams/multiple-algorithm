@@ -2,17 +2,10 @@ import copy
 import os
 import time
 
-def binary_search(arr):
+def binary_search(arr, value):
     arr.sort(key=lambda x: x[0])
     l = 0
     r = len(arr) - 1
-
-    try:
-        # 將使用者輸入的值轉換為整數
-        value = int(input("輸入要尋找的值: "))
-    except ValueError:
-        print("請輸入有效的整數值。")
-        return
 
     while l <= r:
         mid = l + (r - l) // 2
@@ -141,6 +134,11 @@ while True:
         speed = float(input("設定搜索速度 (輸入等待時間，例如0.1表示0.1秒): "))
         sequential_search(arr, target, speed)
     elif main_choice == '3':
-      binary_search(arr)
+        try:
+            # 將使用者輸入的值轉換為整數
+            value = int(input("輸入要尋找的值: "))
+            binary_search(arr, value)
+        except ValueError:
+            print("請輸入有效的整數值。")
     else:
         print("請輸入有效的主選單選擇 (1, 2, 3, 0)。")
